@@ -1,16 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour {
 
+    public Image profile;
     public EventSystem levelEventSystem;
-    private Tile_Attach react;
+    public Renderer rend;
+    private Tile_Manager react;
+
+    public GameObject redBaseUI;
 
 	// Use this for initialization
 	void Start ()
     {
-        react = GetComponent<Tile_Attach>();
+        react = GetComponent<Tile_Manager>();
 	}
 	
 	// Update is called once per frame
@@ -20,6 +25,17 @@ public class UI_Manager : MonoBehaviour {
 
     }
 
+    void ActiveButtons()
+    {
+        switch (tag)
+        {
+            case "Red Base":
+                redBaseUI.SetActive(true);
+                break;
+            
+        }
+    }
+
     void ReactToTiles()
     {
         if (Input.GetMouseButtonDown(0))
@@ -27,14 +43,12 @@ public class UI_Manager : MonoBehaviour {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit HitResults;
+
             if (Physics.Raycast(ray, out HitResults))
             {
-                GameObject HitObject = HitResults.collider.gameObject;
-
-                react = HitObject.GetComponent<Tile_Attach>();
-                if (react != null)
+                if (HitResults.collider.tag == "Tile")
                 {
-                    react.ReactToMouseClick();
+                    Debug.Log("Clicked!");
                 }
             }
         }
