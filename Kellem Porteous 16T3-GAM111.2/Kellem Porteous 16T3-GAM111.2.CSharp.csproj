@@ -66,7 +66,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Tile_Attach.cs" />
     <Compile Include="Assets\Tile_Spawner.cs" />
+    <Compile Include="Assets\UI_Manager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
