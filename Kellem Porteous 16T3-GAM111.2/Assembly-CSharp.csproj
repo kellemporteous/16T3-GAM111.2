@@ -45,7 +45,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Tile_Spawner.cs" />
+     <Compile Include="Assets\Scripts\Camera_Movement.cs" />
+     <Compile Include="Assets\Scripts\Random_Tile.cs" />
+     <Compile Include="Assets\Scripts\Tile_Manager.cs" />
+     <Compile Include="Assets\Scripts\UI_Manager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
