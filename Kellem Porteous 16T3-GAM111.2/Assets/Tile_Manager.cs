@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tile_Spawner : MonoBehaviour {
-
-    public GameObject[] tiles;
+public class Tile_Manager : MonoBehaviour {
     public GameObject tile;
+    private UI_Manager UIManager;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-        tile = tiles[Random.Range(0, tiles.Length)];
         RandomMap();
-	}
+
+        UIManager = GetComponent<UI_Manager>();
+    }
 
     void RandomMap()
     {
@@ -39,4 +39,11 @@ public class Tile_Spawner : MonoBehaviour {
             }
         }
     }
+
+    public void ReactToMouseClick()
+    {
+
+        Debug.Log("Object Clicked!");
+    }
 }
+
