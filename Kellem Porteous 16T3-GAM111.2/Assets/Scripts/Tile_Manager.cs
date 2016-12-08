@@ -2,8 +2,13 @@
 using System.Collections;
 
 public class Tile_Manager : MonoBehaviour {
+
+
     public GameObject tile;
     private UI_Manager UIManager;
+    public Sprite[] tileSprite;
+    private bool worker = false;
+    
 
     // Use this for initialization
     void Start()
@@ -19,7 +24,8 @@ public class Tile_Manager : MonoBehaviour {
         {
             for (int j = 0; j < 2; j++)
             {
-                Instantiate(tile, new Vector2(-23.5f + (i * 1), -25.5f + (j * 1)), Quaternion.identity);
+                MakeTileAt(new Vector2(-23.5f + (i * 1), -25.5f + (j * 1)));
+                //Instantiate(tile, new Vector2(-23.5f + (i * 1), -25.5f + (j * 1)), Quaternion.identity);
             }
         }
 
@@ -27,7 +33,8 @@ public class Tile_Manager : MonoBehaviour {
         {
             for (int j = 0; j < 48; j++)
             {
-                Instantiate(tile, new Vector2(-25.5f + (i * 1), -23.5f + (j * 1)), Quaternion.identity);
+                MakeTileAt(new Vector2(-25.5f + (i * 1), -23.5f + (j * 1)));
+                //Instantiate(tile, new Vector2(-25.5f + (i * 1), -23.5f + (j * 1)), Quaternion.identity);
             }
         }
 
@@ -35,15 +42,31 @@ public class Tile_Manager : MonoBehaviour {
         {
             for (int j = 0; j < 2; j++)
             {
-                Instantiate(tile, new Vector2(-25.5f + (i * 1), 24.5f + (j * 1)), Quaternion.identity);
+                MakeTileAt(new Vector2(-25.5f + (i * 1), 24.5f + (j * 1)));
             }
         }
     }
 
-    public void ReactToMouseClick()
+    void MakeTileAt(Vector3 pos)
+    {
+        GameObject newGO = Instantiate(tile, pos, Quaternion.identity) as GameObject;
+        newGO.GetComponent<SpriteRenderer>().sprite = tileSprite[Random.Range(0, tileSprite.Length)];
+    }
+
+    public void ReactToTile()
+    {
+        if (worker == true)
+        {
+
+        }
+        else if(worker == false)
+        {
+            Debug.Log("Object Clicked!");
+        }
+    }
+
+    public void ReactToBase()
     {
 
-        Debug.Log("Object Clicked!");
     }
 }
-

@@ -4,12 +4,16 @@ using UnityEngine.UI;
 
 public class Random_Tile : MonoBehaviour {
 
-    public GameObject[] tileTexture;
-    public GameObject tileChosen;
+    public Material[] tileTexture;
+
+    private Renderer rend;
+
 	// Use this for initialization
 	void Start ()
     {
-        tileChosen = tileTexture[Random.Range(0, tileTexture.Length)];
+        rend = GetComponent<Renderer>();
+
+        rend.material = tileTexture[Random.Range(0, tileTexture.Length)];
     }
 	
 	// Update is called once per frame

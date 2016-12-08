@@ -8,20 +8,24 @@ public class UI_Manager : MonoBehaviour {
     public Image profile;
     public EventSystem levelEventSystem;
     public Renderer rend;
-    private Tile_Manager react;
+    private Tile_Manager tileManager;
+    private Player_Manager playerManager;
+
 
     public GameObject redBaseUI;
 
 	// Use this for initialization
 	void Start ()
     {
-        react = GetComponent<Tile_Manager>();
+        playerManager = GameObject.FindGameObjectWithTag("Player Manager").GetComponent<Player_Manager>();
+
+        tileManager = GameObject.FindGameObjectWithTag("Tile Manager").GetComponent<Tile_Manager>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        ReactToTiles();
+        ReactToMouseClick();
 
     }
 
@@ -36,7 +40,7 @@ public class UI_Manager : MonoBehaviour {
         }
     }
 
-    void ReactToTiles()
+    void ReactToMouseClick()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -48,7 +52,12 @@ public class UI_Manager : MonoBehaviour {
             {
                 if (HitResults.collider.tag == "Tile")
                 {
-                    Debug.Log("Clicked!");
+                    tileManager.ReactToTile();
+                }
+
+                if (HitResults.collider.tag == "Red Base")
+                {
+                    tileManager.ReactToBase();
                 }
             }
         }
